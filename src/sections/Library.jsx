@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
 import { useLang } from '../hooks/useLang';
 
-// Ajouter vos PDFs dans public/pdf/ — ils apparaîtront automatiquement ici
-// Nommez vos fichiers avec un titre lisible, ex: "Guide-Mouridisme.pdf"
 const BOOKS_STATIC = [
   { key:'b1', pdf:'pdf/guide-mouridisme.pdf', title:'Guide du Mouridisme', desc:'Découvrez les villes qui ont marqué la naissance du mouridisme.' },
-  { key:'b2', pdf:'pdf/459418059-Serigne-Bachir-MBACKE-les-bienfaits-de-l-eternel-livre-pour-petit-ecran-pdf%20(1).pdf', title:"Les Bienfaits de l'Éternel", desc:'« Minanoul Bakhil Khadim fi Siratoul Cheikh al-Khadim »' },
+  { key:'b2', pdf:'pdf/bienfaits-eternel.pdf', title:"Les Bienfaits de l'Éternel", desc:'« Minanoul Bakhil Khadim fi Siratoul Cheikh al-Khadim »' },
   { key:'b3', pdf:'pdf/khassaides-serigne-touba.pdf', title:'Les Khassaides de Serigne Touba', desc:'DIEUREUDIEUFFÉ SERIGNE TOUBA!!!' },
   { key:'b4', pdf:'pdf/diazbul-mourid.pdf', title:'Diazbul Mouride', desc:'Par Cheikh Ibrahima FALL' },
 ];
@@ -17,7 +14,7 @@ const BookIcon = () => (
 );
 
 export default function Library() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   return (
     <section id="livres" className="py-20 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,13 +23,7 @@ export default function Library() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-mouride-green mt-2 mb-4">{t('lib.title')}</h2>
           <div className="section-divider" />
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto">{t('lib.subtitle')}</p>
-          <p className="text-gray-400 text-xs mt-2 italic">
-            {lang === 'fr'
-              ? '💡 Ajoutez vos PDFs dans le dossier public/pdf/ — ils apparaîtront automatiquement.'
-              : '💡 Add your PDFs to the public/pdf/ folder — they will appear automatically.'}
-          </p>
         </div>
-
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {BOOKS_STATIC.map(b => (
             <div key={b.key} className="bg-mouride-cream rounded-2xl p-6 card-hover text-center">
